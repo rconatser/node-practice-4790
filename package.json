@@ -1,0 +1,14 @@
+{
+  "name": "nodepractice4790",
+  "version": "0.0.1",
+  "description": "This is where I practice Node stuff",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Thor Anderson",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
