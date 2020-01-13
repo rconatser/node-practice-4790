@@ -2,8 +2,10 @@ const express = require('express')
 
 const app = express()
 
-app.use('/', function(req, res, next) {
+app.use('/api', function(req, res, next) {
+    console.log(req)
     console.log(`A new request was received at ${new Date().toLocaleString()}`)
+    res.send(`Thanks for hitting my api`)
 })
 
 const port = 3000
