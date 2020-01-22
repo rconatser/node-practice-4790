@@ -17,7 +17,7 @@ app.use(express.static('public'))
 app.use('/', router)
 
 app.use('/api', function(req, res, next) {
-    console.log(req)
+    //console.log(req)
     console.log(`A new request was received at ${new Date().toLocaleString()}`)
     res.send(`Thanks for hitting my api`)
 })
