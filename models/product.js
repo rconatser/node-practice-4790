@@ -1,6 +1,6 @@
 import { getDb } from '../util/database'
 
-class Product {
+export class Product {
     constructor(title, price, description, imageUrl) {
         this.title = title
         this.price = price

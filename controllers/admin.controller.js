@@ -9,9 +9,20 @@ export const postAddProduct = (req, res, next) => {
     product.save()
     .then(result => {
         console.log('Created Product')
-        res.redirect('/admin/products')
+        res.send('Created Product.  Check your DB')
+        //res.redirect('/admin/products')
     })
     .catch((err) => {
         console.error(err)
     })
 }
+
+export const getAllProducts = (req, res, next) => {
+    Product.fetchAll()
+    .then(products => {
+        res.json(products)
+    })
+    .catch(err => {
+        console.log(err)
+    })
+} 

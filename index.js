@@ -1,7 +1,8 @@
 
 import express from 'express'
 import bodyParser from 'body-parser'
-import { router } from './routes/test.route'
+import { testRouter } from './routes/test.route'
+import { adminRouter } from './routes/admin.route'
 
 import { mongoConnect } from './util/database'
 
@@ -14,7 +15,8 @@ app.use(bodyParser.urlencoded({
 
 app.use(express.static('public'))
 
-app.use('/', router)
+app.use('/', testRouter)
+app.use('/admin', adminRouter)
 
 app.use('/api', function(req, res, next) {
     //console.log(req)

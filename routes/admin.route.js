@@ -1,7 +1,9 @@
 import { Router } from 'express'
 
-export const router = Router()
+export const adminRouter = Router()
 
-import { postAddProduct } from '../controllers/admin.controller'
+import { postAddProduct, getAllProducts } from '../controllers/admin.controller'
 
-router.post('/add-product', postAddProduct)
+adminRouter.post('/add-product', postAddProduct)
+
+adminRouter.get('/getAllProducts', getAllProducts)
