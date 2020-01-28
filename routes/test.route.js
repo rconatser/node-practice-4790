@@ -1,15 +1,15 @@
 import { Router } from 'express'
 import { check, validationResult } from 'express-validator'
 
-export const router = Router()
+export const testRouter = Router()
 
 import { test, status, postMalone } from '../controllers/test.controller'
 
-router.get('/test', test)
+testRouter.get('/test', test)
 
-router.get('/status', status)
+testRouter.get('/status', status)
 
-router.use('/malone', 
+testRouter.use('/malone', 
 [check('ozzy').notEmpty().withMessage('Ozzy param is required!')], 
 (req, res, next) => {
     const errors = validationResult(req)
@@ -19,4 +19,4 @@ router.use('/malone',
     next()
 })
 
-router.post('/malone', postMalone)
+testRouter.post('/malone', postMalone)

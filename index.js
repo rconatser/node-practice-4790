@@ -1,9 +1,10 @@
 
 import express from 'express'
 import bodyParser from 'body-parser'
-import { router } from './routes/test.route'
+import { testRouter } from './routes/test.route'
+import { adminRouter } from './routes/admin.route'
 
-import { mongoConnect } from './database/database'
+import { mongoConnect } from './util/database'
 
 const app = express()
 
@@ -14,7 +15,9 @@ app.use(bodyParser.urlencoded({
 
 app.use(express.static('public'))
 
-app.use('/', router)
+app.use('/', testRouter)
+
+app.use('/admin', adminRouter)
 
 app.use('/api', function(req, res, next) {
     //console.log(req)
@@ -24,13 +27,12 @@ app.use('/api', function(req, res, next) {
 
 const port = 3000
 
-app.listen(port, () => {
+/* app.listen(port, () => {
     console.log(`Server is up and running on port ${port}`)
-})
+}) */
 
-/* mongoConnect(client => {
-    console.log(client)
+mongoConnect(() => {
     app.listen(port, () => {
         console.log(`Server is up and running on port ${port}`)
     })
-}) */
+})
