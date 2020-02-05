@@ -60,3 +60,13 @@ export const postEditProduct = (req, res, next) => {
 }
 
 // delete
+
+export const postDeleteProduct = (req, res, next) => {
+    const prodId = req.body.productId
+    Product.deleteById(prodId)
+        .then(() => {
+            console.log('Destroyed product')
+            res.redirect('/admin/getAllProducts')
+        })
+    .catch(err => console.log(err))
+}
