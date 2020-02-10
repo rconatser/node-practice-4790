@@ -4,7 +4,7 @@ import bodyParser from 'body-parser'
 import { testRouter } from './routes/test.route'
 import { adminRouter } from './routes/admin.route'
 
-import { mongoConnect } from './util/database'
+import mongoose from 'mongoose'
 
 const app = express()
 
@@ -24,14 +24,16 @@ app.use('/api', function(req, res, next) {
     res.send(`Thanks for hitting my api`)
 })
 
-const port = 3000
+const port = 5555
 
 /* app.listen(port, () => {
     console.log(`Server is up and running on port ${port}`)
 }) */
 
-mongoConnect(() => {
-    app.listen(port, () => {
-        console.log(`Server is up and running on port ${port}`)
-    })
+mongoose.connect(
+  `mongodb+srv://someuser:abcd1234@tinyhousecluster-opg2q.mongodb.net/test?retryWrites=true&w=majority`
+)
+.then(result => {
+  app.listen(port)
 })
+.catch(err => console.log(err))
