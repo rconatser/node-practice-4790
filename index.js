@@ -27,7 +27,7 @@ app.use('/api', function(req, res, next) {
   res.send(`Thanks for hitting my api`)
 })
 
-let port = process.env.port
+let port = process.env.PORT
 if (port == null || port == '') {
   port = 8000
 }
