@@ -27,11 +27,10 @@ app.use('/api', function(req, res, next) {
   res.send(`Thanks for hitting my api`)
 })
 
-const port = 5000
-
-/* app.listen(port, () => {
-    console.log(`Server is up and running on port ${port}`)
-}) */
+let port = process.env.port
+if (port == null || port == '') {
+  port = 8000
+}
 
 mongoose
   .connect(
